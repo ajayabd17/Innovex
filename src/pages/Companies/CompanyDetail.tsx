@@ -63,7 +63,15 @@ export default function CompanyDetail() {
                 <div className="flex items-start gap-6">
                     <div className="h-24 w-24 rounded-lg bg-white flex items-center justify-center text-3xl font-bold text-gray-500 border shadow-sm overflow-hidden p-2">
                         {company.logo_url ? (
-                            <img src={company.logo_url} alt={company.name || 'Company'} className="h-full w-full object-contain" />
+                            <img
+                                src={company.logo_url}
+                                alt={company.name || 'Company'}
+                                className="h-full w-full object-contain"
+                                onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                    e.currentTarget.parentElement!.innerText = company.name?.substring(0, 1) || 'C';
+                                }}
+                            />
                         ) : (
                             company.name?.substring(0, 1)
                         )}

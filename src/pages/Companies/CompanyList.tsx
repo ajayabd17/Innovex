@@ -107,7 +107,16 @@ export default function CompanyList() {
                             <div className="flex justify-between items-start">
                                 <div className="h-12 w-12 rounded bg-white border flex items-center justify-center text-xl font-bold text-muted-foreground overflow-hidden">
                                     {company.logo_url ? (
-                                        <img src={company.logo_url} alt={company.name || 'Company'} className="h-full w-full object-contain p-1" />
+                                        <img
+                                            src={company.logo_url}
+                                            alt={company.name || 'Company'}
+                                            className="h-full w-full object-contain p-1"
+                                            onError={(e) => {
+                                                e.currentTarget.style.display = 'none';
+                                                e.currentTarget.parentElement!.innerText = company.name?.substring(0, 1) || 'C';
+                                                e.currentTarget.parentElement!.className = "h-12 w-12 rounded bg-white border flex items-center justify-center text-xl font-bold text-muted-foreground overflow-hidden";
+                                            }}
+                                        />
                                     ) : (
                                         company.name?.substring(0, 1)
                                     )}

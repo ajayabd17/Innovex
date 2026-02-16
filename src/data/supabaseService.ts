@@ -21,7 +21,7 @@ export const supabaseService = {
     async getAllCompanies() {
         const { data, error } = await supabase
             .from('companies')
-            .select('*, company_json(short_json)')
+            .select('*, company_json(short_json), company_logo(logo_url)')
             .order('name')
 
         if (error) {
@@ -47,10 +47,10 @@ export const supabaseService = {
     async getCompanyById(id: number) {
         // Fetch core data + full_json + hiring_data manually to avoid Foreign Key issues
 
-        // 1. Fetch Company Core Data
+        // 1. Fetch Company Core Data AND Logo via Relation (Consistent with getAllCompanies)
         const { data: companyData, error: companyError } = await supabase
             .from('companies')
-            .select('*')
+            .select('*, company_logo(logo_url)')
             .eq('company_id', id)
             .single()
 
@@ -62,7 +62,8 @@ export const supabaseService = {
         // 2. Fetch Related Data in Parallel
         const [jsonRes, hiringRes] = await Promise.all([
             supabase.from('company_json').select('full_json').eq('company_id', id).maybeSingle(),
-            supabase.from('hiring_rounds').select('hiring_data').eq('company_id', id).maybeSingle()
+            supabase.from('hiring_rounds').select('hiring_data').eq('company_id', id).maybeSingle(),
+            // Remove direct logo fetch as we fetch it via relation now
         ])
 
         if (jsonRes.error) console.error("Error fetching company_json:", jsonRes.error)
@@ -73,11 +74,15 @@ export const supabaseService = {
         const fullDetails = jsonRes.data?.full_json || {}
         const hiringData = hiringRes.data?.hiring_data || null
 
+        // Extract logo from relation
+        const logoData = Array.isArray(companyData.company_logo) ? companyData.company_logo[0] : companyData.company_logo
+        const logoUrl = logoData?.logo_url || null
+
         // Map strict DB columns + flexible JSON data to strict Interfaces
         const transformedData: CompanyData = {
             ...companyData,
             ...fullDetails, // Overwrite basic fields if JSON is newer/richer
-            logo_url: fullDetails.logo_url || null,
+            logo_url: logoUrl || fullDetails.logo_url || null,
             category: normalizeCategory(companyData.category), // Ensure category is consistent
 
             // Populate nested objects using the SAME fullDetails blob

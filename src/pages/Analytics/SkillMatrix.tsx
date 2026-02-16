@@ -33,8 +33,8 @@ export default function SkillMatrix() {
         }
     }, [companyId])
 
-    // 12 Standard Skill Sets
-    const SKILL_IDS = [1, 2, 3, 4, 5, 6, 7];
+    // 10 Standard Skill Sets
+    const SKILL_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const LEVELS = Array.from({ length: 10 }, (_, i) => i + 1);
 
     const [aggregatedSkills, setAggregatedSkills] = useState<any[]>([])
@@ -59,20 +59,24 @@ export default function SkillMatrix() {
                     const name = skill.skill_set_name?.toLowerCase() || ""
                     const code = skill.skill_set_code?.toLowerCase() || ""
 
-                    if (name.includes("code") || code.includes("code") || name.includes("program") || name.includes("java") || name.includes("python") || name.includes("c++")) skillId = 1
+                    if (name.includes("code") || code.includes("cod") || name.includes("program") || name.includes("java") || name.includes("python") || name.includes("c++")) skillId = 1
                     else if (name.includes("struct") || code.includes("dsa") || name.includes("algo")) skillId = 2
-                    else if (name.includes("system") || code.includes("sys") || name.includes("design")) skillId = 3
-                    else if (name.includes("fund") || code.includes("cs") || name.includes("os") || name.includes("dbms") || name.includes("sql")) skillId = 4
+                    else if (name.includes("system") || code.includes("sys") || name.includes("design") || code.includes("lld") || code.includes("hld")) skillId = 3
+                    else if (name.includes("fund") || code.includes("cs") || name.includes("os") || name.includes("dbms") || name.includes("sql") || code.includes("netw")) skillId = 4
                     else if (name.includes("web") || code.includes("dev") || name.includes("react") || name.includes("node") || name.includes("front") || name.includes("back")) skillId = 5
                     else if (name.includes("aptitude") || code.includes("apt") || name.includes("logic") || name.includes("reason")) skillId = 6
                     else if (name.includes("comm") || code.includes("comm") || name.includes("english") || name.includes("soft")) skillId = 7
+                    else if (name.includes("cloud") || code.includes("cloud") || name.includes("aws") || name.includes("azure")) skillId = 8
+                    else if (name.includes("data") || code.includes("ai") || code.includes("ml") || name.includes("marketing")) skillId = 9
+                    else if (name.includes("engineering") || code.includes("swe") || code.includes("ood") || name.includes("test")) skillId = 10
 
                     if (skillId > 0) {
-                        let level = 6
+                        let level = 6 // Default intermediate
                         const prof = skill.proficiency_level?.toLowerCase() || ""
-                        if (prof.includes("expert") || prof.includes("adv")) level = 9
-                        else if (prof.includes("inter")) level = 7
-                        else if (prof.includes("beg") || prof.includes("basic")) level = 4
+                        // Heuristic for level based on context if proficiency is missing, or parse text
+                        if (prof.includes("expert") || prof.includes("adv") || round.round_number > 2) level = 9
+                        else if (prof.includes("inter") || round.round_number === 2) level = 7
+                        else if (prof.includes("beg") || prof.includes("basic") || round.round_number === 1) level = 5
 
                         const current = skillMap.get(skillId) || 0
                         if (level > current) skillMap.set(skillId, level)

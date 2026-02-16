@@ -1,0 +1,582 @@
+[
+  {
+    "company_id": 115,
+    "name": "3i Infotech Ltd.",
+    "website_url": "https://www.3i-infotech.com"
+  },
+  {
+    "company_id": 1,
+    "name": "Accenture plc",
+    "website_url": "https://www.accenture.com"
+  },
+  {
+    "company_id": 89,
+    "name": "Acko General Insurance Limited",
+    "website_url": "https://www.acko.com"
+  },
+  {
+    "company_id": 49,
+    "name": "Adobe Inc.",
+    "website_url": "https://www.adobe.com/"
+  },
+  {
+    "company_id": 43,
+    "name": "Airbus SE",
+    "website_url": "https://www.airbus.com"
+  },
+  {
+    "company_id": 48,
+    "name": "Akamai Technologies India Pvt. Ltd.",
+    "website_url": "https://www.akamai.com/"
+  },
+  {
+    "company_id": 20,
+    "name": "Amadeus IT Group",
+    "website_url": "https://www.amadeus.com"
+  },
+  {
+    "company_id": 14,
+    "name": "Amazon.com, Inc.",
+    "website_url": "https://www.amazon.com/"
+  },
+  {
+    "company_id": 5,
+    "name": "Apple Inc.",
+    "website_url": "https://www.apple.com"
+  },
+  {
+    "company_id": 45,
+    "name": "Atlassian Corporation",
+    "website_url": "https://www.atlassian.com"
+  },
+  {
+    "company_id": 75,
+    "name": "Autodesk",
+    "website_url": "https://www.autodesk.com"
+  },
+  {
+    "company_id": 86,
+    "name": "Bain Capability Network",
+    "website_url": "https://www.bain.com/about/global-capability-network/"
+  },
+  {
+    "company_id": 85,
+    "name": "Bajaj Finserv Health Ltd.",
+    "website_url": "https://www.bajajfinservhealth.in"
+  },
+  {
+    "company_id": 26,
+    "name": "Barclays PLC ",
+    "website_url": "https://home.barclays/"
+  },
+  {
+    "company_id": 116,
+    "name": "BharatPe",
+    "website_url": "https://bharatpe.com"
+  },
+  {
+    "company_id": 109,
+    "name": "BigBasket",
+    "website_url": "https://www.bigbasket.com"
+  },
+  {
+    "company_id": 28,
+    "name": "Blink Commerce Private Limited ",
+    "website_url": "https://blinkit.com "
+  },
+  {
+    "company_id": 38,
+    "name": "BT Group plc",
+    "website_url": "https://www.bt.com"
+  },
+  {
+    "company_id": 93,
+    "name": "Byju’s",
+    "website_url": "https://byjus.com"
+  },
+  {
+    "company_id": 39,
+    "name": "Capgemini",
+    "website_url": "https://www.capgemini.com"
+  },
+  {
+    "company_id": 18,
+    "name": "Cisco Systems, Inc.",
+    "website_url": "https://www.cisco.com"
+  },
+  {
+    "company_id": 32,
+    "name": "Citigroup Inc.",
+    "website_url": "https://www.citigroup.com"
+  },
+  {
+    "company_id": 94,
+    "name": "Cleartrip",
+    "website_url": "https://www.cleartrip.com"
+  },
+  {
+    "company_id": 12,
+    "name": "Cloudera Data Platform India Private Limited",
+    "website_url": "https://www.cloudera.com/"
+  },
+  {
+    "company_id": 67,
+    "name": "CME Group Inc.",
+    "website_url": "https://www.cmegroup.com"
+  },
+  {
+    "company_id": 95,
+    "name": "Cognizant Technology Solutions Corporation",
+    "website_url": "https://www.cognizant.com"
+  },
+  {
+    "company_id": 7,
+    "name": "Commonwealth Bank of Australia",
+    "website_url": "https://www.commbank.com.au"
+  },
+  {
+    "company_id": 91,
+    "name": "Concentrix Corporation",
+    "website_url": "https://www.concentrix.com"
+  },
+  {
+    "company_id": 37,
+    "name": "Consilio LLC",
+    "website_url": "https://www.consilio.com"
+  },
+  {
+    "company_id": 79,
+    "name": "Darwinbox Digital Solutions Private Limited",
+    "website_url": "https://www.darwinbox.com"
+  },
+  {
+    "company_id": 47,
+    "name": "DeepMind",
+    "website_url": "https://deepmind.google"
+  },
+  {
+    "company_id": 52,
+    "name": "Dell Technologies Inc.",
+    "website_url": "https://www.dell.com"
+  },
+  {
+    "company_id": 61,
+    "name": "DevRev Cloud India Private Limited",
+    "website_url": "https://www.devrev.ai"
+  },
+  {
+    "company_id": 92,
+    "name": "Dunzo Digital Private Limited",
+    "website_url": "https://www.dunzo.com"
+  },
+  {
+    "company_id": 96,
+    "name": "DXC Technology Company",
+    "website_url": "https://www.dxc.com"
+  },
+  {
+    "company_id": 110,
+    "name": "Ecom Express",
+    "website_url": "https://www.ecomexpress.in"
+  },
+  {
+    "company_id": 76,
+    "name": "Electronic Arts",
+    "website_url": "https://www.ea.com"
+  },
+  {
+    "company_id": 80,
+    "name": "Epifi Technologies Private Limited",
+    "website_url": "https://epifi.com"
+  },
+  {
+    "company_id": 53,
+    "name": "Even Healthcare Private Limited",
+    "website_url": "https://even.in"
+  },
+  {
+    "company_id": 41,
+    "name": "Fidelity Investments",
+    "website_url": "https://www.fidelity.com"
+  },
+  {
+    "company_id": 34,
+    "name": "FLAM Gaming Private Limited",
+    "website_url": "https://www.flamapp.com"
+  },
+  {
+    "company_id": 82,
+    "name": "Flipkart Internet Private Limited",
+    "website_url": "https://www.flipkart.com"
+  },
+  {
+    "company_id": 2,
+    "name": "Fractal Analytics Private Limited",
+    "website_url": "https://fractal.ai"
+  },
+  {
+    "company_id": 69,
+    "name": "Freshworks Inc.",
+    "website_url": "freshworks.com"
+  },
+  {
+    "company_id": 50,
+    "name": "Genpact Ltd.",
+    "website_url": "https://www.genpact.com/"
+  },
+  {
+    "company_id": 4,
+    "name": "Google LLC (Subsidiary of Alphabet Inc.)",
+    "website_url": "https://www.google.com"
+  },
+  {
+    "company_id": 54,
+    "name": "Groww Invest Tech Pvt. Ltd.",
+    "website_url": "https://groww.in"
+  },
+  {
+    "company_id": 13,
+    "name": "Guidewire Software, Inc.",
+    "website_url": "https://www.guidewire.com"
+  },
+  {
+    "company_id": 68,
+    "name": "HCL Technologies Limited",
+    "website_url": "https://www.hcltech.com"
+  },
+  {
+    "company_id": 105,
+    "name": "Hexagon Capability Center India",
+    "website_url": "https://hexagon.com"
+  },
+  {
+    "company_id": 70,
+    "name": "HP Inc.",
+    "website_url": "https://www.hp.com"
+  },
+  {
+    "company_id": 73,
+    "name": "HyperVerge Technologies Private Limited",
+    "website_url": "https://hyperverge.co"
+  },
+  {
+    "company_id": 62,
+    "name": "Increff Technologies Private Limited",
+    "website_url": "https://www.increff.com"
+  },
+  {
+    "company_id": 106,
+    "name": "INDmoney Private Limited",
+    "website_url": "https://www.indmoney.com"
+  },
+  {
+    "company_id": 11,
+    "name": "Infosys Limited",
+    "website_url": "https://www.infosys.com"
+  },
+  {
+    "company_id": 25,
+    "name": "International Business Machines Corporation ",
+    "website_url": "https://www.ibm.com ​"
+  },
+  {
+    "company_id": 42,
+    "name": "JPMorgan Chase & Co.",
+    "website_url": "https://www.jpmorganchase.com"
+  },
+  {
+    "company_id": 81,
+    "name": "Juspay Technologies Private Limited",
+    "website_url": "https://juspay.io"
+  },
+  {
+    "company_id": 8,
+    "name": "KALVI CAREER EDUCATION PRIVATE LIMITED",
+    "website_url": "https://kalvium.com/"
+  },
+  {
+    "company_id": 71,
+    "name": "Koninklijke Philips N.V.",
+    "website_url": "philips.com"
+  },
+  {
+    "company_id": 111,
+    "name": "Kyndryl Holdings Inc.",
+    "website_url": "https://www.kyndryl.com"
+  },
+  {
+    "company_id": 9,
+    "name": "Larsen & Toubro Infotech Limited",
+    "website_url": "https://www.ltimindtree.com"
+  },
+  {
+    "company_id": 17,
+    "name": "Leap Finance Private Limited",
+    "website_url": "https://leapfinance.com"
+  },
+  {
+    "company_id": 15,
+    "name": "Llama Logisol Private Limited",
+    "website_url": "https://shipsy.io"
+  },
+  {
+    "company_id": 78,
+    "name": "Microsoft Corporation",
+    "website_url": "https://www.microsoft.com"
+  },
+  {
+    "company_id": 55,
+    "name": "MintAir Corp",
+    "website_url": "NA"
+  },
+  {
+    "company_id": 6,
+    "name": "Mitsubishi UFJ Financial Group, Inc.",
+    "website_url": "https://www.mufg.jp"
+  },
+  {
+    "company_id": 77,
+    "name": "Morgan Stanley",
+    "website_url": "https://www.morganstanley.com"
+  },
+  {
+    "company_id": 74,
+    "name": "Motorq Technologies Private Limited",
+    "website_url": "https://motorq.com"
+  },
+  {
+    "company_id": 63,
+    "name": "MoveInSync Technologies Private Limited",
+    "website_url": "https://www.moveinsync.com"
+  },
+  {
+    "company_id": 30,
+    "name": "Myntra Designs Private Limited",
+    "website_url": "https://www.myntra.com"
+  },
+  {
+    "company_id": 21,
+    "name": "NielsenIQ",
+    "website_url": "https://www.nielseniq.com"
+  },
+  {
+    "company_id": 99,
+    "name": "NTT DATA",
+    "website_url": "https://www.nttdata.com"
+  },
+  {
+    "company_id": 31,
+    "name": "Nurix Therapeutics, Inc.",
+    "website_url": "https://www.nurixtx.com"
+  },
+  {
+    "company_id": 46,
+    "name": "Nutanix, Inc.",
+    "website_url": "https://www.nutanix.com"
+  },
+  {
+    "company_id": 64,
+    "name": "NVIDIA Corporation",
+    "website_url": "https://www.nvidia.com"
+  },
+  {
+    "company_id": 112,
+    "name": "One MobiKwik Systems Limited",
+    "website_url": "https://www.mobikwik.com"
+  },
+  {
+    "company_id": 56,
+    "name": "OpenAI, Inc.",
+    "website_url": "https://openai.com"
+  },
+  {
+    "company_id": 83,
+    "name": "Optum",
+    "website_url": "https://www.optum.com"
+  },
+  {
+    "company_id": 24,
+    "name": "Oracle Financial Services Software Limited",
+    "website_url": "https://www.oracle.com/industries/financial-services/"
+  },
+  {
+    "company_id": 3,
+    "name": "Oracle India Private Limited",
+    "website_url": "https://www.oracle.com/in"
+  },
+  {
+    "company_id": 23,
+    "name": "Palantir Technologies",
+    "website_url": "https://www.palantir.com"
+  },
+  {
+    "company_id": 84,
+    "name": "PayPal Holdings, Inc.",
+    "website_url": "https://www.paypal.com"
+  },
+  {
+    "company_id": 104,
+    "name": "Paytm Money",
+    "website_url": "https://www.paytmmoney.com"
+  },
+  {
+    "company_id": 97,
+    "name": "PhysicsWallah Private Limited",
+    "website_url": "https://www.pw.live"
+  },
+  {
+    "company_id": 87,
+    "name": "Proactively Inc.",
+    "website_url": "https://www.proactively.com"
+  },
+  {
+    "company_id": 90,
+    "name": "Robert Bosch GmbH",
+    "website_url": "https://www.bosch.com"
+  },
+  {
+    "company_id": 114,
+    "name": "Rupeek",
+    "website_url": "https://www.rupeek.com"
+  },
+  {
+    "company_id": 88,
+    "name": "Samsung PRISM",
+    "website_url": "https://research.samsung.com/prism"
+  },
+  {
+    "company_id": 35,
+    "name": "SAP Labs India Private Limited",
+    "website_url": "https://www.sap.com"
+  },
+  {
+    "company_id": 27,
+    "name": "Schneider Electric",
+    "website_url": "https://www.se.com/"
+  },
+  {
+    "company_id": 65,
+    "name": "ServiceNow, Inc.",
+    "website_url": "https://www.servicenow.com"
+  },
+  {
+    "company_id": 113,
+    "name": "Shadowfax",
+    "website_url": "https://shadowfax.in"
+  },
+  {
+    "company_id": 108,
+    "name": "Simplilearn",
+    "website_url": "https://www.simplilearn.com"
+  },
+  {
+    "company_id": 57,
+    "name": "Skyhigh Security",
+    "website_url": "https://www.skyhighsecurity.com"
+  },
+  {
+    "company_id": 22,
+    "name": "Snowflake Inc.",
+    "website_url": "https://www.snowflake.com"
+  },
+  {
+    "company_id": 58,
+    "name": "Space Exploration Technologies Corp.",
+    "website_url": "https://www.spacex.com"
+  },
+  {
+    "company_id": 16,
+    "name": "Swiggy Limited",
+    "website_url": "https://swiggy.com "
+  },
+  {
+    "company_id": 10,
+    "name": "Tata Consultancy Services Limited",
+    "website_url": "https://www.tcs.com"
+  },
+  {
+    "company_id": 107,
+    "name": "Tech Mahindra Limited",
+    "website_url": "https://www.techmahindra.com"
+  },
+  {
+    "company_id": 40,
+    "name": "The Bank of New York Mellon Corporation",
+    "website_url": "https://www.bnymellon.com"
+  },
+  {
+    "company_id": 66,
+    "name": "Tredence Inc.",
+    "website_url": "https://www.tredence.com"
+  },
+  {
+    "company_id": 51,
+    "name": "Uber Technologies, Inc.",
+    "website_url": "https://www.uber.com/in/en/"
+  },
+  {
+    "company_id": 98,
+    "name": "Udemy, Inc.",
+    "website_url": "https://www.udemy.com"
+  },
+  {
+    "company_id": 101,
+    "name": "upGrad Education Private Limited",
+    "website_url": "https://www.upgrad.com"
+  },
+  {
+    "company_id": 100,
+    "name": "Virtusa Corporation",
+    "website_url": "https://www.virtusa.com"
+  },
+  {
+    "company_id": 19,
+    "name": "Volvo Group",
+    "website_url": "https://www.volvogroup.com"
+  },
+  {
+    "company_id": 59,
+    "name": "Walmart Inc.",
+    "website_url": "https://www.walmart.com"
+  },
+  {
+    "company_id": 72,
+    "name": "Warner Bros. Discovery, Inc.",
+    "website_url": "wbd.com"
+  },
+  {
+    "company_id": 44,
+    "name": "Wells Fargo & Company",
+    "website_url": "https://www.wellsfargo.com"
+  },
+  {
+    "company_id": 103,
+    "name": "Wipro Limited",
+    "website_url": "https://www.wipro.com"
+  },
+  {
+    "company_id": 36,
+    "name": "Xperi Inc.",
+    "website_url": "https://www.xperi.com"
+  },
+  {
+    "company_id": 60,
+    "name": "Zepto Technologies Private Limited",
+    "website_url": "https://www.zepto.in"
+  },
+  {
+    "company_id": 29,
+    "name": "Zerodha Broking Limited ",
+    "website_url": "https://zerodha.com "
+  },
+  {
+    "company_id": 33,
+    "name": "ZS Associates, Inc.",
+    "website_url": "https://www.zs.com"
+  },
+  {
+    "company_id": 102,
+    "name": "ZS Associates, Inc.",
+    "website_url": "https://www.zensar.com"
+  }
+]

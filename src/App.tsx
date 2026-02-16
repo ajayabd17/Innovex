@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom"
 import { Layout } from "@/components/layout/Layout"
 import Dashboard from "@/pages/Dashboard"
 import CompanyList from "@/pages/Companies/CompanyList"
@@ -8,27 +8,43 @@ import GlobalSkillMatrix from "@/pages/Analytics/GlobalSkillMatrix"
 import HiringProcess from "@/pages/Analytics/HiringProcess"
 import GlobalHiringRounds from "@/pages/Analytics/GlobalHiringRounds"
 import InnovxView from "@/pages/Innovx/InnovxView"
+import NotFoundPage from "@/pages/NotFoundPage"
+
+import LoginPage from "@/pages/Auth/LoginPage"
+
+const ProtectedRoute = () => {
+  const isAuth = localStorage.getItem("isAuthenticated") === "true"
+  return isAuth ? <Outlet /> : <Navigate to="/login" replace />
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<LoginPage />} />
 
-          {/* Companies Catalog */}
-          <Route path="/companies" element={<CompanyList />} />
-          <Route path="/companies/:id" element={<CompanyDetail />} />
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Dashboard />} />
 
-          {/* Company Specific Deep Dives */}
-          <Route path="/companies/:id/skills" element={<SkillMatrix />} />
-          <Route path="/companies/:id/process" element={<HiringProcess />} />
-          <Route path="/companies/:id/innovx" element={<InnovxView />} />
+            {/* Companies Catalog */}
+            <Route path="/companies" element={<CompanyList />} />
+            <Route path="/companies/:id" element={<CompanyDetail />} />
 
-          {/* Global Analytics Views */}
-          <Route path="/skills" element={<GlobalSkillMatrix />} />
-          <Route path="/hiring-process" element={<GlobalHiringRounds />} />
-          <Route path="/innovx" element={<InnovxView />} />
+            {/* Company Specific Deep Dives */}
+            <Route path="/companies/:id/skills" element={<SkillMatrix />} />
+            <Route path="/companies/:id/process" element={<HiringProcess />} />
+            <Route path="/companies/:id/innovx" element={<InnovxView />} />
+
+            {/* Global Analytics Views */}
+            <Route path="/skills" element={<GlobalSkillMatrix />} />
+            <Route path="/hiring-process" element={<GlobalHiringRounds />} />
+            <Route path="/innovx" element={<InnovxView />} />
+
+            {/* Catch all */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
