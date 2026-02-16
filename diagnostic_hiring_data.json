@@ -1,0 +1,137 @@
+{
+  "company_id": 115,
+  "hiring_data": {
+    "company_name": "3i Infotech Ltd.",
+    "job_role_details": [
+      {
+        "bonus": "Performance-based annual bonus up to 10% of CTC.",
+        "role_title": "Associate Software Engineer",
+        "compensation": "CTC",
+        "hiring_rounds": [
+          {
+            "round_name": "Aptitude + Coding Test",
+            "skill_sets": [
+              {
+                "skill_set_code": "APTI",
+                "typical_questions": "Solve time and work problem related to project delivery?; Percentage increase/decrease in revenue case?; Logical reasoning puzzle based on seating arrangement?"
+              },
+              {
+                "skill_set_code": "DSA",
+                "typical_questions": "Find duplicate element in array?; Reverse a linked list?; Check if a string is palindrome?"
+              },
+              {
+                "skill_set_code": "COD",
+                "typical_questions": "Write a program to sort an array?; Implement binary search?; Count frequency of characters in string?"
+              }
+            ],
+            "round_number": 1,
+            "round_category": "Coding Test",
+            "assessment_mode": "Online",
+            "evaluation_type": "Technical"
+          },
+          {
+            "round_name": "Technical Interview",
+            "skill_sets": [
+              {
+                "skill_set_code": "OOD",
+                "typical_questions": "Explain OOP principles with examples?; Difference between abstraction and encapsulation?; Design a simple banking system?"
+              },
+              {
+                "skill_set_code": "SQL",
+                "typical_questions": "Write query to find second highest salary?; Explain normalization?; Difference between INNER JOIN and LEFT JOIN?"
+              },
+              {
+                "skill_set_code": "OS",
+                "typical_questions": "What is deadlock?; Explain process vs thread?; What is virtual memory?"
+              }
+            ],
+            "round_number": 2,
+            "round_category": "Interview",
+            "assessment_mode": "On Campus",
+            "evaluation_type": "Technical"
+          },
+          {
+            "round_name": "HR + Managerial Round",
+            "skill_sets": [
+              {
+                "skill_set_code": "COMM",
+                "typical_questions": "Tell me about yourself?; Why 3i Infotech?; Are you willing to relocate or work in shifts?"
+              },
+              {
+                "skill_set_code": "SWE",
+                "typical_questions": "Explain SDLC models?; How do you handle tight deadlines?; Describe a team project you worked on?"
+              },
+              {
+                "skill_set_code": "APTI",
+                "typical_questions": "Situational judgment scenario about client escalation?; Basic analytical reasoning case?; Problem-solving scenario in production issue?"
+              }
+            ],
+            "round_number": 3,
+            "round_category": "Interview",
+            "assessment_mode": "Office",
+            "evaluation_type": "HR"
+          }
+        ],
+        "role_category": "SDE",
+        "ctc_or_stipend": 550000,
+        "job_description": "Develop and maintain enterprise banking, insurance, and ERP solutions. Work on backend services, database integrations, application enhancements, and client-specific customizations. Requires strong programming fundamentals, SQL expertise, understanding of OOP, and basic system design knowledge.",
+        "benefits_summary": "Health insurance, training certifications, on-site opportunity, and project performance incentives.",
+        "opportunity_type": "Employment"
+      },
+      {
+        "bonus": "Pre-placement offer based on performance.",
+        "role_title": "Cloud and DevOps Intern",
+        "compensation": "Stipend",
+        "hiring_rounds": [
+          {
+            "round_name": "Online Technical Test",
+            "skill_sets": [
+              {
+                "skill_set_code": "CLOUD",
+                "typical_questions": "Explain IaaS vs PaaS vs SaaS?; What is auto-scaling?; How does load balancer work?"
+              },
+              {
+                "skill_set_code": "NETW",
+                "typical_questions": "Explain TCP/IP model?; What is DNS?; What is subnetting?"
+              },
+              {
+                "skill_set_code": "OS",
+                "typical_questions": "Explain Linux file permissions?; What is process scheduling?; Difference between cron and daemon?"
+              }
+            ],
+            "round_number": 1,
+            "round_category": "Aptitude",
+            "assessment_mode": "Online",
+            "evaluation_type": "Technical"
+          },
+          {
+            "round_name": "Technical + HR Interview",
+            "skill_sets": [
+              {
+                "skill_set_code": "SWE",
+                "typical_questions": "Explain CI/CD pipeline?; What is version control?; How do you handle deployment failures?"
+              },
+              {
+                "skill_set_code": "COMM",
+                "typical_questions": "Explain your cloud project?; Why DevOps career path?; How do you work in a team?"
+              },
+              {
+                "skill_set_code": "APTI",
+                "typical_questions": "Logical reasoning scenario about server downtime?; Basic probability question?; Analytical reasoning puzzle?"
+              }
+            ],
+            "round_number": 2,
+            "round_category": "Interview",
+            "assessment_mode": "On Campus",
+            "evaluation_type": "Managerial"
+          }
+        ],
+        "role_category": "DEVOPS",
+        "ctc_or_stipend": 25000,
+        "job_description": "Assist in deployment automation, CI/CD pipeline management, cloud infrastructure provisioning, and monitoring enterprise applications. Exposure to AWS/Azure, Docker, Kubernetes, and scripting tools.",
+        "benefits_summary": "Certification sponsorship, mentorship from DevOps leads, internship certificate.",
+        "opportunity_type": "Internship"
+      }
+    ]
+  }
+}
