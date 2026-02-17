@@ -642,4 +642,22 @@ export interface CompanyData extends Company {
     skills?: CompanySkillScore[];
     hiring_rounds?: HiringRound;
     logo_url?: string | null;
+    innovx_data?: InnovxData;
+}
+
+export interface InnovxData {
+    innovation_roadmap?: any[];
+    strategic_objectives?: string[];
+    [key: string]: any;
+}
+
+export interface InnovxRaw {
+    company_id: number;
+    company_name: string | null;
+    innovx_data: InnovxData;
+    updated_at: string | null;
+    companies?: {
+        name: string;
+        logo_url?: string | null;
+    }
 }

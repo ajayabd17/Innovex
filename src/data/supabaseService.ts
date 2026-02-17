@@ -124,5 +124,41 @@ export const supabaseService = {
             dream: mapped.filter((c) => c === 'Dream').length,
             regular: mapped.filter((c) => c === 'Regular').length,
         }
+    },
+
+    async getInnovx() {
+        const { data, error } = await supabase
+            .from('innovx')
+            .select('*, companies(name, company_logo(logo_url))')
+            .order('updated_at', { ascending: false })
+
+        if (error) {
+            console.error('Error fetching innovx:', error)
+            return []
+        }
+
+        return data.map((item: any) => ({
+            ...item,
+            companies: {
+                name: item.companies?.name,
+                logo_url: Array.isArray(item.companies?.company_logo)
+                    ? item.companies.company_logo[0]?.logo_url
+                    : item.companies?.company_logo?.logo_url
+            }
+        }))
+    },
+
+    async getInnovxByCompany(companyId: number) {
+        const { data, error } = await supabase
+            .from('innovx')
+            .select('*')
+            .eq('company_id', companyId)
+            .maybeSingle()
+
+        if (error) {
+            console.error(`Error fetching innovx for company ${companyId}:`, error)
+            return null
+        }
+        return data
     }
 }
