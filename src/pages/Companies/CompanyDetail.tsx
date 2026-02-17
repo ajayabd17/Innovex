@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import {
     MapPin, Users, Briefcase, Globe, ExternalLink, Calendar,
-    TrendingUp, Shield, DollarSign, BookOpen, Cpu
+    TrendingUp, Shield, DollarSign, BookOpen, Cpu, Zap
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { supabaseService } from "@/data/supabaseService"
 import type { CompanyData } from "@/types/schema"
 import { getSkillName } from "@/data/mockData"
+import { InnovxList } from "@/components/companies/InnovxList"
 
 export default function CompanyDetail() {
     const { id } = useParams<{ id: string }>()
@@ -116,7 +117,7 @@ export default function CompanyDetail() {
             {/* Content */}
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
                 <TabsList className="w-full justify-start h-12 bg-transparent border-b rounded-none p-0 space-x-6">
-                    {["overview", "business", "culture", "technology", "financials"].map((tab) => (
+                    {["overview", "business", "culture", "technology", "financials", "innovx"].map((tab) => (
                         <TabsTrigger
                             key={tab}
                             value={tab}
@@ -252,6 +253,9 @@ export default function CompanyDetail() {
                     ]} />
                 </TabsContent>
 
+                <TabsContent value="innovx" className="space-y-6">
+                    <InnovxList companyId={company.company_id} />
+                </TabsContent>
             </Tabs>
         </div >
     )
