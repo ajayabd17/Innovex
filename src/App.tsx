@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom"
+import { HashRouter, Routes, Route, Navigate, Outlet } from "react-router-dom"
 import { Layout } from "@/components/layout/Layout"
 import Dashboard from "@/pages/Dashboard"
 import CompanyList from "@/pages/Companies/CompanyList"
@@ -22,7 +22,7 @@ const ProtectedRoute = () => {
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
 
@@ -55,7 +55,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
