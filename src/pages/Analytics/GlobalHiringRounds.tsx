@@ -13,8 +13,15 @@ export default function GlobalHiringRounds() {
 
     useEffect(() => {
         async function fetchCompanies() {
-            const data = await supabaseService.getAllCompanies()
-            setCompanies(data)
+            // Check cache
+            const cached = sessionStorage.getItem("hiring_rounds_cache");
+            if (cached) {
+                setCompanies(JSON.parse(cached));
+            }
+
+            const data = await supabaseService.getAllCompanies();
+            setCompanies(data);
+            sessionStorage.setItem("hiring_rounds_cache", JSON.stringify(data));
         }
         fetchCompanies()
     }, [])

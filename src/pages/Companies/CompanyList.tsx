@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { supabaseService } from "@/data/supabaseService"
-import type { Company, CompanyData } from "@/types/schema"
 
 export default function CompanyList() {
     const navigate = useNavigate()
@@ -18,10 +17,18 @@ export default function CompanyList() {
 
     useEffect(() => {
         async function fetchCompanies() {
-            const data = await supabaseService.getAllCompanies()
-            setCompanies(data)
+            // Check cache first
+            const cached = sessionStorage.getItem("companies_cache");
+            if (cached) {
+                setCompanies(JSON.parse(cached));
+                // Optional: Re-fetch silently to update
+            }
+
+            const data = await supabaseService.getAllCompanies();
+            setCompanies(data);
+            sessionStorage.setItem("companies_cache", JSON.stringify(data));
         }
-        fetchCompanies()
+        fetchCompanies();
     }, [])
 
     const filteredCompanies = useMemo(() => {

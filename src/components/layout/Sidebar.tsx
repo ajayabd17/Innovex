@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils"
 const NAV_ITEMS = [
     { name: "Dashboard", href: "/", icon: LayoutDashboard },
     { name: "Companies", href: "/companies", icon: Building2 },
-    { name: "Hiring Skill Sets", href: "/skills", icon: BarChart3 },
     { name: "Hiring Process", href: "/hiring-process", icon: GitGraph },
     { name: "INNOVX", href: "/innovx", icon: Zap },
 ]
@@ -53,13 +52,17 @@ export function Sidebar() {
                 </nav>
             </div>
             <div className="border-t p-4 bg-muted/20">
-                <div className="flex items-center gap-3 mb-4 px-2">
+                <div
+                    className="flex items-center gap-3 mb-4 px-2 cursor-pointer hover:bg-muted/50 p-2 rounded-md transition-colors"
+                    onClick={() => navigate("/profile")}
+                    title="Go to Profile"
+                >
                     <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                         <User className="h-4 w-4" />
                     </div>
                     <div className="overflow-hidden">
                         <p className="text-sm font-medium leading-none truncate">{userEmail}</p>
-                        <p className="text-xs text-muted-foreground truncate">Admin</p>
+                        <p className="text-xs text-muted-foreground truncate">View Profile</p>
                     </div>
                 </div>
                 <Button variant="ghost" className="w-full justify-start text-red-500 hover:text-red-600 hover:bg-red-50" onClick={handleLogout}>

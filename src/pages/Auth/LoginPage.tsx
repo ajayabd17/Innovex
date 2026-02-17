@@ -8,34 +8,52 @@ import srmLogo from "@/assets/srm-logo.webp"
 
 export default function LoginPage() {
     const navigate = useNavigate()
-    const [email, setEmail] = useState("")
+    const [netId, setNetId] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [isValidNetId, setIsValidNetId] = useState(true)
+
+    // NetID validation: 2 letters + 4 digits + @srmist.edu.in
+    const validateNetId = (value: string) => {
+        const netIdRegex = /^[a-zA-Z]{2}\d{4}@srmist\.edu\.in$/
+        return netIdRegex.test(value)
+    }
+
+    const handleNetIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
+        setNetId(value)
+        setError(null)
+
+        // Only validate if user has typed something
+        if (value.length > 0) {
+            setIsValidNetId(validateNetId(value))
+        } else {
+            setIsValidNetId(true)
+        }
+    }
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
         setError(null)
 
-        // Domain Check
-        if (!email.toLowerCase().endsWith("@srmist.edu.in")) {
-            setError("Access Restricted: Please use your University Email ID (@srmist.edu.in)")
+        // Validate NetID format
+        if (!validateNetId(netId)) {
+            setError("Invalid NetID format. Use: xx1234@srmist.edu.in")
             setLoading(false)
             return
         }
 
-        // Mock Login
-        try {
-            await new Promise(resolve => setTimeout(resolve, 800)) // Simulate network
+        // Simulate network delay for effect
+        setTimeout(() => {
+            // Allow login (Password check removed as requested)
             localStorage.setItem("isAuthenticated", "true")
-            localStorage.setItem("userEmail", email)
+            localStorage.setItem("userNetId", netId)
+            localStorage.setItem("userEmail", netId) // Keep for compatibility
             navigate("/")
-        } catch (err) {
-            setError("Authentication failed")
-        } finally {
             setLoading(false)
-        }
+        }, 800)
     }
 
     return (
@@ -53,21 +71,29 @@ export default function LoginPage() {
                 <CardContent>
                     <form onSubmit={handleLogin} className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="email">Email ID</Label>
+                            <Label htmlFor="netid">NetID</Label>
                             <Input
-                                id="email"
-                                type="email"
-                                placeholder="netid@srmist.edu.in"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                id="netid"
+                                type="text"
+                                placeholder="NetID"
+                                value={netId}
+                                onChange={handleNetIdChange}
+                                className={!isValidNetId ? "border-red-500 focus-visible:ring-red-500" : ""}
                                 required
                             />
+                            {!isValidNetId && (
+                                <p className="text-xs text-red-500 flex items-center gap-1">
+                                    <span>⚠️</span>
+                                    Format: 2 letters + 4 digits + @srmist.edu.in
+                                </p>
+                            )}
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="password">Password</Label>
                             <Input
                                 id="password"
                                 type="password"
+                                placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required

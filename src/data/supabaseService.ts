@@ -189,5 +189,76 @@ export const supabaseService = {
             return null
         }
         return data
+    },
+
+    // --- Student Profile Methods ---
+
+    // Helper to get local storage key
+    _getProfileKey(netId: string) { return `innovex_profile_${netId}` },
+    _getSkillsKey(netId: string) { return `innovex_skills_${netId}` },
+
+    async getStudentProfile(netId: string): Promise<any> {
+        await new Promise(resolve => setTimeout(resolve, 300))
+
+        const stored = localStorage.getItem(this._getProfileKey(netId))
+        if (stored) return JSON.parse(stored)
+
+        // Default empty profile/defaults if new user
+        return {
+            student_id: "mock-student-id",
+            net_id: netId,
+            degree_type: "",
+            department: "",
+            specialization: "",
+            current_cgpa: "",
+            tenth_percentage: "",
+            twelfth_percentage: "",
+            active_backlogs: 0,
+            history_backlogs: 0,
+            gap_years: 0,
+            graduation_year: new Date().getFullYear() + 1
+        }
+    },
+
+    async updateStudentProfile(profileData: any) {
+        await new Promise(resolve => setTimeout(resolve, 500))
+
+        const netId = profileData.net_id || profileData.netId
+        if (netId) {
+            const key = this._getProfileKey(netId)
+            localStorage.setItem(key, JSON.stringify(profileData))
+        } else {
+            console.error("No net_id found in updateStudentProfile", profileData)
+        }
+
+        return { success: true }
+    },
+
+    async getStudentSkillMatrix(netId: string): Promise<any> {
+        await new Promise(resolve => setTimeout(resolve, 300))
+
+        const stored = localStorage.getItem(this._getSkillsKey(netId))
+        if (stored) return JSON.parse(stored)
+
+        // Default Data
+        return {
+            languages: [],
+            core_subjects: {},
+            domains: [],
+            tools: []
+        }
+    },
+
+    async updateStudentSkillMatrix(netId: string, matrixData: any) {
+        await new Promise(resolve => setTimeout(resolve, 500))
+
+        if (netId) {
+            localStorage.setItem(this._getSkillsKey(netId), JSON.stringify(matrixData))
+        }
+        return { success: true }
+    },
+
+    async getCompanyMatch(netId: string, companyId: number): Promise<number> {
+        return Math.floor(Math.random() * (95 - 60 + 1)) + 60; // Return 60-95%
     }
 }

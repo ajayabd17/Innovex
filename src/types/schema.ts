@@ -632,6 +632,72 @@ export interface SkillSet {
     skill_set_description: string;
 }
 
+export interface StudentProfile {
+    student_id: string
+    net_id: string
+    degree_type?: string
+    department?: string
+    specialization?: string
+    current_cgpa?: number
+    tenth_percentage?: number
+    twelfth_percentage?: number
+    diploma_percentage?: number
+    active_backlogs: number
+    history_backlogs: number
+    gap_years: number
+    gap_duration?: string
+    graduation_year?: number
+    profile_completion_percentage: number
+    created_at: string
+    updated_at: string
+}
+
+export interface StudentSkillMatrix {
+    matrix_id?: string
+    student_id?: string
+    languages: { language: string; proficiency: number }[]
+    core_subjects: { [key: string]: number }
+    domains: string[]
+    tools: string[]
+    updated_at?: string
+}
+
+export interface StudentProject {
+    project_id: string
+    student_id: string
+    title: string
+    description?: string
+    tech_stack: string[]
+    problem_statement?: string
+    deployment_status?: 'Live' | 'In Progress' | 'Prototype'
+    github_link?: string
+    display_order?: number
+    created_at: string
+}
+
+export interface StudentExperience {
+    experience_id: string
+    student_id: string
+    company_name: string
+    role?: string
+    duration_months?: number
+    start_date?: string
+    end_date?: string
+    description?: string
+    created_at: string
+}
+
+export interface StudentPreferences {
+    preference_id: string
+    student_id: string
+    preferred_roles: string[]
+    preferred_locations: string[]
+    willing_to_relocate: boolean
+    open_to_bond: boolean
+    open_to_startup: boolean
+    updated_at: string
+}
+
 
 // -- InnovX Specific Types --
 

@@ -13,10 +13,19 @@ export default function InnovxView() {
 
     useEffect(() => {
         async function loadData() {
-            setLoading(true)
-            const data = await supabaseService.getInnovx()
-            setInnovxList(data)
-            setLoading(false)
+            // Check cache
+            const cached = sessionStorage.getItem("innovx_cache");
+            if (cached) {
+                setInnovxList(JSON.parse(cached));
+                setLoading(false);
+            } else {
+                setLoading(true);
+            }
+
+            const data = await supabaseService.getInnovx();
+            setInnovxList(data);
+            setLoading(false);
+            sessionStorage.setItem("innovx_cache", JSON.stringify(data));
         }
         loadData()
     }, [])

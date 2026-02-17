@@ -11,6 +11,7 @@ import InnovxView from "@/pages/Innovx/InnovxView"
 import NotFoundPage from "@/pages/NotFoundPage"
 import CompanyIntelligenceLayout from "@/pages/Companies/CompanyIntelligenceLayout"
 import CompanyInnovx from "@/pages/Companies/CompanyInnovx"
+import ProfilePage from "@/pages/Profile/ProfilePage"
 
 import LoginPage from "@/pages/Auth/LoginPage"
 
@@ -45,6 +46,9 @@ function App() {
             <Route path="/skills" element={<GlobalSkillMatrix />} />
             <Route path="/hiring-process" element={<GlobalHiringRounds />} />
             <Route path="/innovx" element={<InnovxView />} />
+
+            {/* Student Profile */}
+            <Route path="/profile" element={<ProfilePage />} />
 
             {/* Catch all */}
             <Route path="*" element={<NotFoundPage />} />
