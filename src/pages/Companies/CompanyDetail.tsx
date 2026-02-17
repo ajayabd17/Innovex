@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { supabaseService } from "@/data/supabaseService"
 import type { CompanyData } from "@/types/schema"
-import { getSkillName } from "@/data/mockData"
+import { getSkillName } from "@/lib/constants"
 import { InnovxList } from "@/components/companies/InnovxList"
 
 export default function CompanyDetail() {

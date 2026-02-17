@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { getSkillName } from "@/data/mockData"
+import { getSkillName } from "@/lib/constants"
 import { supabaseService } from "@/data/supabaseService"
 import type { CompanyData } from "@/types/schema"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"

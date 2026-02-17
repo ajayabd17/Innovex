@@ -81,6 +81,7 @@ export interface CompanyBusiness {
     som: string | null;
     customer_concentration_risk: string | null;
     core_value_proposition?: string | null;
+    focus_sectors?: string | null;
 }
 
 export interface CompanyCabPolicy {
@@ -631,6 +632,94 @@ export interface SkillSet {
     skill_set_description: string;
 }
 
+
+// -- InnovX Specific Types --
+
+export interface InnovxMaster {
+    industry: string;
+    company_name: string;
+    sub_industry: string;
+    target_market: string;
+    geographic_focus: string;
+    core_business_model: string;
+}
+
+export interface IndustryTrend {
+    trend_name: string;
+    impact_areas: string[];
+    trend_drivers: string[];
+    trend_description: string;
+    time_horizon_years: number;
+    strategic_importance: "Critical" | "High" | "Medium" | "Low";
+}
+
+export interface InnovxProject {
+    tier_level: string; // e.g., "Tier 1"
+    project_name: string;
+    target_users: string;
+    business_value: string;
+    success_metrics: string[];
+    primary_use_case: string;
+    integrations_apis: string[];
+    problem_statement: string;
+    ai_ml_technologies: string[];
+    architecture_style: string;
+    secondary_use_cases: string[];
+    security_compliance: string;
+    aligned_pillar_names: string[];
+    backend_technologies: string[];
+    infrastructure_cloud: string;
+    innovation_objective: string;
+    scenario_description: string;
+    user_journey_summary: string;
+    frontend_technologies: string[];
+    differentiation_factor: string;
+    data_storage_processing: string;
+}
+
+export interface StrategicPillar {
+    focus_area: string;
+    pillar_name: string;
+    strategic_risks: string;
+    key_technologies: string[];
+    pillar_description: string;
+    cto_vision_statement: string;
+    strategic_assumptions: string;
+}
+
+export interface InnovationRoadmapItem {
+    time_horizon: string;
+    innovation_type: string;
+    target_customer: string;
+    expected_outcome: string;
+    innovation_theme: string;
+    problem_statement: string;
+    dependent_trend_names: string[];
+    required_capabilities: string[];
+}
+
+export interface CompetitiveLandscapeItem {
+    bet_name: string;
+    threat_level: string;
+    core_strength: string;
+    bet_description: string;
+    competitor_name: string;
+    competitor_type: string;
+    futuristic_level: string;
+    market_positioning: string;
+    innovation_category: string;
+    strategic_objective: string;
+}
+
+export interface InnovxData {
+    innovx_master?: InnovxMaster;
+    industry_trends?: IndustryTrend[];
+    innovx_projects?: InnovxProject[];
+    strategic_pillars?: StrategicPillar[];
+    innovation_roadmap?: InnovationRoadmapItem[];
+    competitive_landscape?: CompetitiveLandscapeItem[];
+}
+
 // Composite / Joined Type for Frontend Usage
 export interface CompanyData extends Company {
     business?: CompanyBusiness;
@@ -645,11 +734,6 @@ export interface CompanyData extends Company {
     innovx_data?: InnovxData;
 }
 
-export interface InnovxData {
-    innovation_roadmap?: any[];
-    strategic_objectives?: string[];
-    [key: string]: any;
-}
 
 export interface InnovxRaw {
     company_id: number;

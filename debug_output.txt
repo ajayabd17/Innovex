@@ -1,0 +1,47 @@
+Checking logos for: Barclays, Myntra, Schneider Electric, Swiggy, Google
+
+--- Found Matches for "Barclays" ---
+Name: Barclays PLC  (ID: 26)
+  Logo Array Length: 5
+    [0] https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Barclays_Logo.svg/2560px-Barclays_Logo.svg.png
+    [1] https://imgs.search.brave.com/7BJLhOfIGTSwYGEPULnEy2ISA-ERR-avgNOPaCaw9FI/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9icmFu/ZHNsb2dvcy5jb20v/d3AtY29udGVudC91/cGxvYWRzL2ltYWdl/cy9iYXJjbGF5cy1s/b2dvLTEucG5n
+    [2] https://imgs.search.brave.com/7BJLhOfIGTSwYGEPULnEy2ISA-ERR-avgNOPaCaw9FI/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9icmFu/ZHNsb2dvcy5jb20v/d3AtY29udGVudC91/cGxvYWRzL2ltYWdl/cy9iYXJjbGF5cy1s/b2dvLTEucG5n
+    [3] https://imgs.search.brave.com/7BJLhOfIGTSwYGEPULnEy2ISA-ERR-avgNOPaCaw9FI/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9icmFu/ZHNsb2dvcy5jb20v/d3AtY29udGVudC91/cGxvYWRzL2ltYWdl/cy9iYXJjbGF5cy1s/b2dvLTEucG5n
+    [4] https://imgs.search.brave.com/7BJLhOfIGTSwYGEPULnEy2ISA-ERR-avgNOPaCaw9FI/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9icmFu/ZHNsb2dvcy5jb20v/d3AtY29udGVudC91/cGxvYWRzL2ltYWdl/cy9iYXJjbGF5cy1s/b2dvLTEucG5n
+  -> APP USES [0]: https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Barclays_Logo.svg/2560px-Barclays_Logo.svg.png
+
+--- Found Matches for "Myntra" ---
+Name: Myntra Designs Private Limited (ID: 30)
+  Logo Array Length: 5
+    [0] https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Myntra_logo.svg/1200px-Myntra_logo.svg.png
+    [1] https://imgs.search.brave.com/DNxOl9rNtOEJ8Le3PuAPiZ2-4_44yiRVE4ErkJuotXA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzA1Lzcx/Lzg5LzA1NzE4OTYx/MGU4NjBjOGE4NmI0/ZmVmMmI3MGQwOTQ3/LmpwZw
+    [2] https://play-lh.googleusercontent.com/7Ak4Ye7wNUtheIvSKnVgGL_OIZWjGPZNV6TP_3XLx8sy3sHaPH_0J2i1k5k7g6sqXw
+    [3] https://myntra.com/assets/images/logo.png
+    [4] https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/myntra_logo_4f3d2f.png
+  -> APP USES [0]: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Myntra_logo.svg/1200px-Myntra_logo.svg.png
+
+--- Found Matches for "Schneider Electric" ---
+Name: Schneider Electric (ID: 27)
+  Logo Array Length: 5
+    [0] https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Schneider_Electric_Logo.svg/2560px-Schneider_Electric_Logo.svg.png
+    [1] https://www.se.com/ww/eNAssets/564/document/527555/presentation-Q3-revenues-2025.pdf (logo in doc)
+    [2] https://www.se.com/ww/eNAssets/common/img/logo-schneider-electric.svg
+    [3] https://imgs.search.brave.com/RUgjRBthoces6CVvrsFARQ40JW777nUMtYuVD_dlNEo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi85Lzk1L1Nj/aG5laWRlcl9FbGVj/dHJpY18yMDA3LnN2/Zy8yNTBweC1TY2hu/ZWlkZXJfRWxlY3Ry/aWNfMjAwNy5zdmcu/cG5n
+    [4] https://imgs.search.brave.com/RUgjRBthoces6CVvrsFARQ40JW777nUMtYuVD_dlNEo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi85Lzk1L1Nj/aG5laWRlcl9FbGVj/dHJpY18yMDA3LnN2/Zy8yNTBweC1TY2hu/ZWlkZXJfRWxlY3Ry/aWNfMjAwNy5zdmcu/cG5n
+  -> APP USES [0]: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Schneider_Electric_Logo.svg/2560px-Schneider_Electric_Logo.svg.png
+
+--- Found Matches for "Swiggy" ---
+Name: Swiggy Limited (ID: 16)
+  Logo Array Length: 5
+    [0] https://upload.wikimedia.org/wikipedia/commons/6/67/Swiggy_logo.png
+    [1] https://www.swiggy.com/assets/images/swiggy-logo.png
+    [2] https://companieslogo.com/img/orig/SWIGGY.BO-4f7f9a08.png
+    [3] https://imgs.search.brave.com/U37h9wvUUYTvfuvtnVA_xydQ6If7DH858QsTRHJXmgQ/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9jb21w/YW5pZXNsb2dvLmNv/bS9pbWcvb3JpZy9T/V0lHR1kuTlNfQklH/LWYwZTlmNzlhLnBu/Zz90PTE3MzE5ODcw/NjA
+    [4] https://pbs.twimg.com/profile_images/2006980811099435008/au7k-WXb_400x400.jpg
+  -> APP USES [0]: https://upload.wikimedia.org/wikipedia/commons/6/67/Swiggy_logo.png
+
+--- Found Matches for "Google" ---
+Name: Google LLC (Subsidiary of Alphabet Inc.) (ID: 4)
+  Logo Array Length: 1
+    [0] https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+  -> APP USES [0]: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
