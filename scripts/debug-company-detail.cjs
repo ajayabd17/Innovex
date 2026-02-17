@@ -1,7 +1,7 @@
 
-import { createClient } from '@supabase/supabase-js'
-import dotenv from 'dotenv'
-import path from 'path'
+const { createClient } = require('@supabase/supabase-js')
+const dotenv = require('dotenv')
+const path = require('path')
 
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
@@ -17,7 +17,7 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 // Mocking the getCompanyById logic from supabaseService.ts to verify data structure
-async function debugCompanyDetail(id: number) {
+async function debugCompanyDetail(id) {
     console.log(`Fetching data for company ID: ${id}`)
 
     // 1. Fetch Company Core Data
@@ -33,22 +33,28 @@ async function debugCompanyDetail(id: number) {
     }
 
     // 2. Fetch Related Data in Parallel
-    const [jsonRes, innovxRes] = await Promise.all([
+    const promises = [
         supabase.from('company_json').select('full_json').eq('company_id', id).maybeSingle(),
         supabase.from('innovx').select('innovx_data').eq('company_id', id).maybeSingle(),
-    ])
+    ]
+
+    const [jsonRes, innovxRes] = await Promise.all(promises)
 
     const innovxData = innovxRes.data?.innovx_data
 
     console.log('\n--- InnovX Data Check ---')
     if (innovxData) {
-        console.log('innovx_data found:', typeof innovxData)
+        console.log('innovx_data found type:', typeof innovxData)
         console.log('Keys:', Object.keys(innovxData))
 
         if (innovxData.innovx_master) {
-            console.log('Has innovx_master:', innovxData.innovx_master)
+            console.log('Has innovx_master:', JSON.stringify(innovxData.innovx_master, null, 2))
         } else {
             console.log('NO innovx_master found in innovx_data')
+            // Check if it is flat
+            if (innovxData.industry) {
+                console.log('Found flat structure keys (e.g., industry):', innovxData.industry)
+            }
         }
 
         if (innovxData.innovx_projects) {
@@ -61,5 +67,5 @@ async function debugCompanyDetail(id: number) {
     }
 }
 
-// Check for a known company (e.g. Google id=4 or another known ID)
+// Check for a known company (e.g. Google id=4)
 debugCompanyDetail(4)

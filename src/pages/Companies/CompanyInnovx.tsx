@@ -14,12 +14,26 @@ export default function CompanyInnovx() {
 
     const { company } = context
     const innovx = company.innovx_data
+
     // Fallback: Check for nested "innovx_master" OR use the root object if keys exist there.
     // This handles cases where data might be flattened in the DB.
     const master = innovx?.innovx_master || (innovx as any)
 
+
+    // Helper to safely render potential objects/arrays
+    const safeRender = (val: any, fallback = "N/A") => {
+        if (!val) return fallback
+        if (typeof val === 'string') return val
+        if (typeof val === 'number') return String(val)
+        if (Array.isArray(val)) return val.join(", ")
+        if (typeof val === 'object') return JSON.stringify(val)
+        return String(val)
+    }
+
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* DEBUG INFO REMOVED FOR CLEANLINESS, CAN RESTORE IF NEEDED */}
+
             {/* 1. Master Strategy Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <Card className="bg-blue-50/50 border-blue-100">
@@ -29,8 +43,8 @@ export default function CompanyInnovx() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="font-semibold text-blue-900">{master?.industry || company.nature_of_company || "N/A"}</p>
-                        <p className="text-xs text-blue-700/70 mt-1">{master?.sub_industry || ""}</p>
+                        <p className="font-semibold text-blue-900">{safeRender(master?.industry || company.nature_of_company)}</p>
+                        <p className="text-xs text-blue-700/70 mt-1">{safeRender(master?.sub_industry, "")}</p>
                     </CardContent>
                 </Card>
 
@@ -41,7 +55,7 @@ export default function CompanyInnovx() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-sm text-purple-900">{master?.core_business_model || "N/A"}</p>
+                        <p className="text-sm text-purple-900">{safeRender(master?.core_business_model)}</p>
                     </CardContent>
                 </Card>
 
@@ -52,7 +66,7 @@ export default function CompanyInnovx() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="font-semibold text-orange-900">{master?.target_market || "N/A"}</p>
+                        <p className="font-semibold text-orange-900">{safeRender(master?.target_market)}</p>
                     </CardContent>
                 </Card>
 
@@ -63,7 +77,7 @@ export default function CompanyInnovx() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="font-semibold text-green-900">{master?.geographic_focus || "Global"}</p>
+                        <p className="font-semibold text-green-900">{safeRender(master?.geographic_focus, "Global")}</p>
                     </CardContent>
                 </Card>
             </div>
@@ -74,28 +88,22 @@ export default function CompanyInnovx() {
                     <Lightbulb className="h-6 w-6 text-yellow-500" />
                     Innovation Initiatives
                 </h2>
-                {/* We pass the whole innovx_data object or projects array to a list component, 
-                    or render them here directly if InnovxList isn't suitable. 
-                    Let's use InnovxList but maybe we need to update it to support the new JSON structure. 
-                    For now, passing companyId lets it fetch its own data, but since we HAVE the data in 'company.innovx_data', 
-                    we should probably pass it down to avoid re-fetching! 
-                */}
                 <InnovxList companyId={company.company_id} preloadedData={innovx} />
             </div>
 
             {/* 3. Strategic Pillars (Optional addition based on JSON) */}
-            {innovx?.strategic_pillars && (
+            {innovx?.strategic_pillars && Array.isArray(innovx.strategic_pillars) && (
                 <div className="mt-8">
                     <h2 className="text-xl font-bold tracking-tight mb-4">Strategic Pillars</h2>
                     <div className="grid md:grid-cols-3 gap-4">
                         {innovx.strategic_pillars.map((pillar, idx) => (
                             <Card key={idx} className="border-t-4 border-t-indigo-500">
                                 <CardHeader>
-                                    <div className="text-xs uppercase font-bold text-indigo-500 tracking-wider mb-1">{pillar.focus_area}</div>
-                                    <CardTitle className="text-lg">{pillar.pillar_name}</CardTitle>
+                                    <div className="text-xs uppercase font-bold text-indigo-500 tracking-wider mb-1">{safeRender(pillar.focus_area)}</div>
+                                    <CardTitle className="text-lg">{safeRender(pillar.pillar_name)}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="text-sm text-muted-foreground">
-                                    {pillar.pillar_description}
+                                    {safeRender(pillar.pillar_description)}
                                 </CardContent>
                             </Card>
                         ))}
@@ -105,4 +113,3 @@ export default function CompanyInnovx() {
         </div>
     )
 }
-

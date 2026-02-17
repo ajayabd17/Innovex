@@ -11,6 +11,9 @@ export default function Dashboard() {
     const [searchQuery, setSearchQuery] = useState("")
     const [metrics, setMetrics] = useState({ total: 0, marquee: 0, superDream: 0, dream: 0, regular: 0 })
     const [previewCompanies, setPreviewCompanies] = useState<any[]>([])
+    const [suggestions, setSuggestions] = useState<any[]>([])
+    const [isFocused, setIsFocused] = useState(false)
+    const [allCompaniesList, setAllCompaniesList] = useState<any[]>([])
 
     useEffect(() => {
         async function fetchData() {
@@ -21,8 +24,10 @@ export default function Dashboard() {
             ])
 
             setMetrics(metricsData)
+            setAllCompaniesList(allCompanies)
+
             // Show top 4 companies, preferentially Marquee or Super Dream
-            const sorted = allCompanies.sort((a: any, b: any) => {
+            const sorted = [...allCompanies].sort((a: any, b: any) => {
                 const priority = { "Marquee": 3, "Super Dream": 2, "Dream": 1, "Regular": 0 }
                 const scoreA = priority[a.category as keyof typeof priority] || 0
                 const scoreB = priority[b.category as keyof typeof priority] || 0
@@ -33,15 +38,48 @@ export default function Dashboard() {
         fetchData()
     }, [])
 
-    const handleSearch = (e: React.FormEvent) => {
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const query = e.target.value
+        setSearchQuery(query)
+
+        if (query.trim().length > 0) {
+            const filtered = allCompaniesList.filter(c =>
+                c.name?.toLowerCase().includes(query.toLowerCase()) ||
+                c.category?.toLowerCase().includes(query.toLowerCase())
+            ).slice(0, 5) // Limit to top 5
+            setSuggestions(filtered)
+        } else {
+            setSuggestions([])
+        }
+    }
+
+    const handleSelectCompany = (companyId: number) => {
+        navigate(`/companies/${companyId}`)
+    }
+
+    const handleSearchSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        if (searchQuery.trim()) {
+        if (suggestions.length > 0) {
+            // Navigate to first suggestion if available and user hits enter
+            handleSelectCompany(suggestions[0].company_id)
+        } else if (searchQuery.trim()) {
+            // Fallback to search results page
             navigate(`/companies?search=${searchQuery}`)
         }
     }
 
+    // Helper to get badge color
+    const getBadgeVariant = (category: string) => {
+        switch (category) {
+            case 'Marquee': return "bg-purple-100 text-purple-700 hover:bg-purple-200"
+            case 'Super Dream': return "bg-blue-100 text-blue-700 hover:bg-blue-200"
+            case 'Dream': return "bg-green-100 text-green-700 hover:bg-green-200"
+            default: return "bg-gray-100 text-gray-700 hover:bg-gray-200"
+        }
+    }
+
     return (
-        <div className="space-y-8">
+        <div className="space-y-8" onClick={() => setIsFocused(false)}>
             <div>
                 <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
                 <p className="text-muted-foreground">
@@ -97,17 +135,55 @@ export default function Dashboard() {
             <div className="py-12 flex flex-col items-center justify-center space-y-4">
                 <div className="text-center space-y-2">
                     <h2 className="text-2xl font-semibold">Find a Company</h2>
-                    <p className="text-muted-foreground">Search by name, sector, or skill requirements</p>
+                    <p className="text-muted-foreground">Search by name or sector</p>
                 </div>
-                <form onSubmit={handleSearch} className="relative w-full max-w-2xl">
-                    <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                    <Input
-                        placeholder="Search for companies..."
-                        className="pl-10 h-12 text-lg shadow-sm"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </form>
+                <div className="relative w-full max-w-2xl" onClick={(e) => e.stopPropagation()}>
+                    <form onSubmit={handleSearchSubmit} className="relative">
+                        <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+                        <Input
+                            placeholder="Search by company name (e.g., Amazon, TCS, Microsoft)..."
+                            className="pl-10 h-12 text-lg shadow-sm"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            onFocus={() => setIsFocused(true)}
+                        />
+                    </form>
+
+                    {/* Autocomplete Dropdown */}
+                    {isFocused && searchQuery.trim().length > 0 && (
+                        <div className="absolute top-full left-0 right-0 mt-2 bg-popover text-popover-foreground rounded-md border shadow-md z-50 overflow-hidden">
+                            {suggestions.length > 0 ? (
+                                <div className="py-1">
+                                    {suggestions.map((company) => (
+                                        <div
+                                            key={company.company_id}
+                                            className="px-4 py-3 hover:bg-accent hover:text-accent-foreground cursor-pointer flex items-center justify-between transition-colors"
+                                            onClick={() => handleSelectCompany(company.company_id)}
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                {company.logo_url ? (
+                                                    <img src={company.logo_url} alt={company.name} className="h-6 w-6 object-contain" />
+                                                ) : (
+                                                    <div className="h-6 w-6 rounded bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
+                                                        {company.name?.substring(0, 1)}
+                                                    </div>
+                                                )}
+                                                <span className="font-medium">{company.name}</span>
+                                            </div>
+                                            <div className={`text-xs px-2 py-0.5 rounded-full font-medium ${getBadgeVariant(company.category)}`}>
+                                                {company.category}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="px-4 py-8 text-center text-muted-foreground">
+                                    No companies found matching "{searchQuery}"
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
 
             <div className="space-y-6">

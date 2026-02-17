@@ -1,3 +1,4 @@
+
 import { supabase } from '@/lib/supabase'
 import type { CompanyData } from '@/types/schema'
 
@@ -24,21 +25,19 @@ const resolveLogo = (logoData: any) => {
 
     // Heuristics to find the best logo
     // 1. Filter out known bad formats (PDF)
-    const valid = logoData.filter(l => l.logo_url && !l.logo_url.toLowerCase().endsWith('.pdf'))
+    const valid = logoData.filter((l: any) => l.logo_url && !l.logo_url.toLowerCase().endsWith('.pdf'))
     if (valid.length === 0) return logoData[0].logo_url
 
     // 2. Deprioritize blocked/unstable domains (Wikimedia hotlink blocks, Brave search proxies)
-    // Wikimedia often blocks direct hotlinking. Brave proxies might work but are discouraged.
-    // We prefer official domains or stable CDNs.
-    const preferred = valid.filter(l => {
+    const preferred = valid.filter((l: any) => {
         const u = l.logo_url.toLowerCase()
         return !u.includes('wikimedia.org') && !u.includes('brave.com')
     })
 
     if (preferred.length > 0) return preferred[0].logo_url
 
-    // 3. Fallback: If only Wikimedia/Brave exist, prefer Brave (proxies usually allow hotlinking) over Wikimedia
-    const brave = valid.filter(l => l.logo_url.toLowerCase().includes('brave.com'))
+    // 3. Fallback: If only Wikimedia/Brave exist, prefer Brave over Wikimedia
+    const brave = valid.filter((l: any) => l.logo_url.toLowerCase().includes('brave.com'))
     if (brave.length > 0) return brave[0].logo_url
 
     // 4. Last resort
@@ -60,7 +59,7 @@ export const supabaseService = {
         return data.map((c: any) => {
             const shortData = c.company_json?.[0]?.short_json || c.company_json?.short_json || {}
             // Handle array or single object response for 1:1 relation
-            const logoUrl = resolveLogo(c.company_logo) // Use helper to find best logo
+            const logoUrl = resolveLogo(c.company_logo)
             const innovxData = Array.isArray(c.innovx) ? c.innovx[0]?.innovx_data : c.innovx?.innovx_data
 
             return {
@@ -80,7 +79,7 @@ export const supabaseService = {
         // 1. Fetch Company Core Data AND Logo via Relation (Consistent with getAllCompanies)
         const { data: companyData, error: companyError } = await supabase
             .from('companies')
-            .select('*, company_logo(logo_url)')
+            .select('*, company_logo(logo_url), company_skill_scores(*)')
             .eq('company_id', id)
             .single()
 
@@ -112,7 +111,7 @@ export const supabaseService = {
         const transformedData: CompanyData = {
             ...companyData,
             ...fullDetails, // Overwrite basic fields if JSON is newer/richer
-            logo_url: logoUrl || fullDetails.logo_url || null,
+            logo_url: logoUrl || null,
             category: normalizeCategory(companyData.category), // Ensure category is consistent
 
             // Populate nested objects using the SAME fullDetails blob
@@ -121,7 +120,7 @@ export const supabaseService = {
             culture: fullDetails as unknown as any,
             technologies: fullDetails as unknown as any,
             people: fullDetails as unknown as any,
-            skills: companyData.skills || fullDetails.skills || [],
+            skills: companyData.company_skill_scores || companyData.skills || fullDetails.skills || [],
 
             // Hiring rounds needs specific handling
             hiring_rounds: {
@@ -173,9 +172,7 @@ export const supabaseService = {
             ...item,
             companies: {
                 name: item.companies?.name,
-                logo_url: Array.isArray(item.companies?.company_logo)
-                    ? item.companies.company_logo[0]?.logo_url
-                    : item.companies?.company_logo?.logo_url
+                logo_url: resolveLogo(item.companies?.company_logo)
             }
         }))
     },

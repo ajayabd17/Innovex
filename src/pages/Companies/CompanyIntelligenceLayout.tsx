@@ -36,7 +36,7 @@ export default function CompanyIntelligenceLayout() {
     return (
         <div className="min-h-screen bg-background">
             {/* Sticky Header */}
-            <div className="sticky top-14 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+            <div className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
                 <div className="container py-4 flex flex-col gap-4">
                     <div className="flex items-center gap-4">
                         <Button variant="ghost" size="icon" asChild className="shrink-0">
