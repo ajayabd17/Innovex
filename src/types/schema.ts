@@ -734,6 +734,11 @@ export interface CompanyData extends Company {
     innovx_data?: InnovxData;
 }
 
+export interface InnovxData {
+    innovation_roadmap?: any[];
+    strategic_objectives?: string[];
+    [key: string]: any;
+}
 
 export interface InnovxRaw {
     company_id: number;
