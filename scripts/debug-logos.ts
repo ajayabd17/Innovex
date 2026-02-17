@@ -1,74 +1,60 @@
+
 import { createClient } from '@supabase/supabase-js'
-import fs from 'fs'
+import dotenv from 'dotenv'
 import path from 'path'
 
-// Robust env loading
-const envPath = path.resolve(process.cwd(), '.env')
-let supabaseUrl = process.env.VITE_SUPABASE_URL
-let supabaseKey = process.env.VITE_SUPABASE_ANON_KEY
+// Load environment variables from .env file
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
+
+const supabaseUrl = process.env.VITE_SUPABASE_URL
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY
 
 if (!supabaseUrl || !supabaseKey) {
-    if (fs.existsSync(envPath)) {
-        const envConfig = fs.readFileSync(envPath, 'utf8')
-        const lines = envConfig.split(/\r?\n/)
-        lines.forEach(line => {
-            const parts = line.split('=')
-            if (parts.length >= 2) {
-                const key = parts[0].trim()
-                const val = parts.slice(1).join('=').trim()
-                if (key === 'VITE_SUPABASE_URL') supabaseUrl = val
-                if (key === 'VITE_SUPABASE_ANON_KEY') supabaseKey = val
-            }
-        })
-    }
-}
-
-if (!supabaseUrl || !supabaseKey) {
-    console.error("Failed to load VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY")
+    console.error('Missing Supabase credentials in .env')
     process.exit(1)
 }
 
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 async function debugLogos() {
-    console.log("Checking for companies with MISSING logos...")
+    const targetCompanies = ['Barclays', 'Myntra', 'Schneider Electric', 'Swiggy', 'Schneider']
 
-    const { data: companies, error } = await supabase
+    console.log(`Checking logos for: ${targetCompanies.join(', ')}`)
+
+    const { data, error } = await supabase
         .from('companies')
         .select(`
-            company_id, 
-            name, 
-            company_logo (
-                logo_url
-            )
-        `)
-        .order('name')
+      company_id, 
+      name, 
+      company_logo (
+        logo_url
+      )
+    `)
+        .in('name', targetCompanies)
 
     if (error) {
-        console.error("Error fetching:", error)
+        console.error('Error fetching companies:', error)
         return
     }
 
-    const missing = companies.filter((c: any) => {
-        const logoData = Array.isArray(c.company_logo) ? c.company_logo[0] : c.company_logo
-        return !logoData?.logo_url
-    })
-
-    console.log(`Total Companies: ${companies.length}`)
-    console.log(`Companies with Missing Logos: ${missing.length}`)
-
-    console.log("\n--- Sample Logo URLs: ---")
-    companies.slice(0, 5).forEach((c: any) => {
-        const logoData = Array.isArray(c.company_logo) ? c.company_logo[0] : c.company_logo
-        console.log(`- ${c.name}: ${logoData?.logo_url}`)
-    })
-
-    if (missing.length > 0) {
-        console.log("\n--- Missing Logos for: ---")
-        missing.forEach((c: any) => console.log(`- ${c.name} (ID: ${c.company_id})`))
-    } else {
-        console.log("All companies have logos!")
+    if (!data || data.length === 0) {
+        console.log('No matching companies found.')
+        return
     }
+
+    data.forEach((company: any) => {
+        console.log(`\nCompany: ${company.name} (ID: ${company.company_id})`)
+        if (company.company_logo) {
+            if (Array.isArray(company.company_logo)) {
+                console.log(`Logo relation is Array via Select: Length ${company.company_logo.length}`)
+                company.company_logo.forEach((l: any, i: number) => console.log(`  [${i}] URL: ${l.logo_url}`))
+            } else {
+                console.log(`Logo relation is Object: URL: ${company.company_logo.logo_url}`)
+            }
+        } else {
+            console.log('Logo relation is NULL/Undefined')
+        }
+    })
 }
 
 debugLogos()

@@ -76,6 +76,12 @@ export default function InnovxView() {
                     </Card>
                 ))}
             </div>
+
+            {!loading && filteredCompanies.length === 0 && (
+                <div className="text-center py-12 text-muted-foreground">
+                    No companies found matching "{searchQuery}"
+                </div>
+            )}
         </div>
     )
 }

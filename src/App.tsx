@@ -9,6 +9,8 @@ import HiringProcess from "@/pages/Analytics/HiringProcess"
 import GlobalHiringRounds from "@/pages/Analytics/GlobalHiringRounds"
 import InnovxView from "@/pages/Innovx/InnovxView"
 import NotFoundPage from "@/pages/NotFoundPage"
+import CompanyIntelligenceLayout from "@/pages/Companies/CompanyIntelligenceLayout"
+import CompanyInnovx from "@/pages/Companies/CompanyInnovx"
 
 import LoginPage from "@/pages/Auth/LoginPage"
 
@@ -32,10 +34,12 @@ function App() {
             <Route path="/companies" element={<CompanyList />} />
             <Route path="/companies/:id" element={<CompanyDetail />} />
 
-            {/* Company Specific Deep Dives */}
-            <Route path="/companies/:id/skills" element={<SkillMatrix />} />
-            <Route path="/companies/:id/process" element={<HiringProcess />} />
-            <Route path="/companies/:id/innovx" element={<InnovxView />} />
+            {/* Company Specific Deep Dives - Using Layout Wrapper */}
+            <Route path="/companies/:id" element={<CompanyIntelligenceLayout />}>
+              <Route path="skills" element={<SkillMatrix />} />
+              <Route path="process" element={<HiringProcess />} />
+              <Route path="innovx" element={<CompanyInnovx />} />
+            </Route>
 
             {/* Global Analytics Views */}
             <Route path="/skills" element={<GlobalSkillMatrix />} />
